@@ -55,6 +55,23 @@ Modelar um domínio de serviço de streaming utilizando banco de dados orientado
 4. Executar o script para criar e popular o grafo.
 5. Executar as consultas de exemplo ao final do arquivo.
 
+🔍 Exemplos de Consultas (para explorar o grafo)
+
+// Listar filmes assistidos pelo usuário 1
+
+MATCH (u:Usuario {id:1})-[:ASSISTIU]->(c)
+RETURN u.nome, c.titulo;
+
+// Filmes do gênero Ação
+
+MATCH (f:Filme)-[:TEM_GENERO]->(g:Genero {nome:"Ação"})
+RETURN f.titulo, g.nome;
+
+// Atores e os filmes em que atuaram
+
+MATCH (a:Ator)-[:ATUOU_EM]->(f:Filme)
+RETURN a.nome, f.titulo;
+
 ## ✅ Conclusão
 
 Este projeto demonstra o uso de bancos de dados orientados a grafos para modelar um serviço de streaming, explorando nós, relacionamentos e propriedades, e evidenciando as vantagens do Neo4j para consultas baseadas em relacionamentos.
